@@ -37,7 +37,7 @@ class Transaksi(models.Model):
     verbose_name_plural = 'Transaksi'
 
 class Pesawat(models.Model):
-  pesawat_id = models.IntegerField(primary_key=True)
+  pesawat_id = models.CharField(max_length=4, primary_key=True)
   pesawat_kapasitas = models.IntegerField()
   pesawat_tipe = models.CharField(max_length=255)
   pesawat_perusahaan = models.CharField(max_length=255)
@@ -47,7 +47,7 @@ class Pesawat(models.Model):
     verbose_name_plural = 'Pesawat'
 
 class Penerbangan(models.Model):
-  penerbangan_id = models.IntegerField(primary_key=True)
+  penerbangan_id = models.CharField(max_length=7, primary_key=True)
   penerbangan_asal = models.CharField(max_length=255)
   penerbangan_tujuan = models.CharField(max_length=255)
   pesawat_pesawat = models.ForeignKey(Pesawat, on_delete=models.CASCADE)
