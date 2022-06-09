@@ -4,6 +4,7 @@
 
 ``` shell
 pip3 install django
+pip3 install django-environ
 django-admin startproject Tiketin
 cd Tiketin
 python3 startapp core
@@ -11,35 +12,9 @@ python3 migrate
 python3 createsuperuser
 ```
 
-## Modify settings.py
-
-```py
-# Tiketin/settings.py
-# ...
-
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "core",    # Add this line
-]
-...
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': *database_name*,
-        'USER': *user_database*,
-        'PASSWORD': *password*,
-        'HOST': *host*,
-        'PORT': *port*,
-    }
-}
-```
-
 ## App Directory
+
+The core app directory will start with the following files inside:
 
 ```
 core/
@@ -52,7 +27,23 @@ core/
 ├── apps.py
 ├── models.py
 ├── tests.py
-└── views.py
+├── views.py
+├── .env.example
+└── .env
+```
+
+## Set Up Environment Variables
+
+Create file named `.env` that contains database environment variables, refer to `.env.example` file.
+
+## Run Server
+
+Run the Django development server using:
+
+```shell
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver
 ```
 
 ## Reference
